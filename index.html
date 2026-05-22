@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar" id="sidebar" aria-label="Primary navigation">
+      <div class="brand">
+        <div class="brand-mark">A</div>
+        <div>
+          <strong>AdminPro</strong>
+          <span>Control Center</span>
+        </div>
+      </div>
+
+      <nav class="sidebar-nav">
+        <a href="#overview" class="nav-link active" aria-current="page">
+          <span class="nav-icon">⌂</span>
+          Dashboard
+        </a>
+        <a href="#analytics" class="nav-link">
+          <span class="nav-icon">▦</span>
+          Analytics
+        </a>
+        <a href="#customers" class="nav-link">
+          <span class="nav-icon">◉</span>
+          Customers
+        </a>
+        <a href="#orders" class="nav-link">
+          <span class="nav-icon">▣</span>
+          Orders
+          <span class="nav-badge">12</span>
+        </a>
+        <a href="#products" class="nav-link">
+          <span class="nav-icon">◇</span>
+          Products
+        </a>
+        <a href="#settings" class="nav-link">
+          <span class="nav-icon">⚙</span>
+          Settings
+        </a>
+      </nav>
+
+      <div class="sidebar-card">
+        <span>Monthly target</span>
+        <strong>84%</strong>
+        <div class="progress-track" aria-hidden="true">
+          <div class="progress-fill"></div>
+        </div>
+      </div>
+    </aside>
+
+    <div class="sidebar-overlay" id="sidebarOverlay" hidden></div>
+
+    <main class="main-content">
+      <header class="topbar">
+        <button class="icon-button menu-button" id="menuButton" type="button" aria-label="Open sidebar" aria-controls="sidebar" aria-expanded="false">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+
+        <div class="search-wrap">
+          <span aria-hidden="true">⌕</span>
+          <input type="search" placeholder="Search reports, users, orders..." aria-label="Search">
+        </div>
+
+        <div class="topbar-actions">
+          <button class="theme-toggle" id="themeToggle" type="button" aria-label="Switch to dark mode" aria-pressed="false">
+            <span class="theme-icon" aria-hidden="true">☾</span>
+            <span class="theme-text">Dark</span>
+          </button>
+          <button class="icon-button" type="button" aria-label="Notifications">●</button>
+          <button class="profile-button" type="button" aria-label="Open profile menu">
+            <span class="avatar">SK</span>
+            <span class="profile-copy">
+              <strong>Sandeep</strong>
+              <small>Administrator</small>
+            </span>
+          </button>
+        </div>
+      </header>
+
+      <section class="page-heading" id="overview">
+        <div>
+          <p>Overview</p>
+          <h1>Dashboard Home</h1>
+        </div>
+        <div class="heading-actions">
+          <button class="secondary-button" type="button">Export</button>
+          <button class="primary-button" type="button">Create Report</button>
+        </div>
+      </section>
+
+      <section class="stats-grid" aria-label="Analytics cards">
+        <article class="stat-card">
+          <div class="stat-top">
+            <span>Total Revenue</span>
+            <b>$</b>
+          </div>
+          <strong>$128,420</strong>
+          <small class="positive">+12.8% from last month</small>
+          <div class="mini-chart" aria-hidden="true">
+            <i style="height: 34%"></i>
+            <i style="height: 54%"></i>
+            <i style="height: 44%"></i>
+            <i style="height: 72%"></i>
+            <i style="height: 82%"></i>
+          </div>
+        </article>
+        <article class="stat-card">
+          <div class="stat-top">
+            <span>Active Users</span>
+            <b>U</b>
+          </div>
+          <strong>24,892</strong>
+          <small class="positive">+8.2% this week</small>
+          <div class="mini-chart teal" aria-hidden="true">
+            <i style="height: 42%"></i>
+            <i style="height: 38%"></i>
+            <i style="height: 64%"></i>
+            <i style="height: 58%"></i>
+            <i style="height: 78%"></i>
+          </div>
+        </article>
+        <article class="stat-card">
+          <div class="stat-top">
+            <span>Pending Orders</span>
+            <b>O</b>
+          </div>
+          <strong>1,284</strong>
+          <small class="warning">142 need review</small>
+          <div class="mini-chart amber" aria-hidden="true">
+            <i style="height: 72%"></i>
+            <i style="height: 64%"></i>
+            <i style="height: 52%"></i>
+            <i style="height: 46%"></i>
+            <i style="height: 38%"></i>
+          </div>
+        </article>
+        <article class="stat-card">
+          <div class="stat-top">
+            <span>Conversion Rate</span>
+            <b>%</b>
+          </div>
+          <strong>7.64%</strong>
+          <small class="positive">+1.4% improvement</small>
+          <div class="mini-chart teal" aria-hidden="true">
+            <i style="height: 28%"></i>
+            <i style="height: 44%"></i>
+            <i style="height: 39%"></i>
+            <i style="height: 67%"></i>
+            <i style="height: 74%"></i>
+          </div>
+        </article>
+      </section>
+
+      <section class="dashboard-grid" id="analytics">
+        <article class="panel chart-panel">
+          <div class="panel-header">
+            <div>
+              <span>Performance</span>
+              <h2>Revenue trend</h2>
+            </div>
+            <select aria-label="Revenue period">
+              <option>Last 7 days</option>
+              <option>Last 30 days</option>
+              <option>Last quarter</option>
+            </select>
+          </div>
+          <div class="bar-chart" aria-label="Revenue bar chart">
+            <div style="--height: 48%"><span>Mon</span></div>
+            <div style="--height: 62%"><span>Tue</span></div>
+            <div style="--height: 54%"><span>Wed</span></div>
+            <div style="--height: 76%"><span>Thu</span></div>
+            <div style="--height: 68%"><span>Fri</span></div>
+            <div style="--height: 88%"><span>Sat</span></div>
+            <div style="--height: 72%"><span>Sun</span></div>
+          </div>
+        </article>
+
+        <article class="panel">
+          <div class="panel-header compact">
+            <div>
+              <span>Tasks</span>
+              <h2>Today</h2>
+            </div>
+          </div>
+          <ul class="task-list">
+            <li>
+              <input type="checkbox" checked aria-label="Approve supplier invoice">
+              <span>Approve supplier invoice</span>
+            </li>
+            <li>
+              <input type="checkbox" aria-label="Review user feedback">
+              <span>Review user feedback</span>
+            </li>
+            <li>
+              <input type="checkbox" aria-label="Update campaign budget">
+              <span>Update campaign budget</span>
+            </li>
+            <li>
+              <input type="checkbox" aria-label="Prepare weekly report">
+              <span>Prepare weekly report</span>
+            </li>
+          </ul>
+        </article>
+      </section>
+
+      <section class="charts-grid" aria-label="Charts">
+        <article class="panel">
+          <div class="panel-header">
+            <div>
+              <span>Audience</span>
+              <h2>Traffic channels</h2>
+            </div>
+          </div>
+          <div class="donut-layout">
+            <div class="donut-chart" aria-label="Traffic channels chart">
+              <span>68%</span>
+            </div>
+            <ul class="legend-list">
+              <li><i class="legend direct"></i> Direct <strong>42%</strong></li>
+              <li><i class="legend search"></i> Search <strong>26%</strong></li>
+              <li><i class="legend social"></i> Social <strong>18%</strong></li>
+              <li><i class="legend referral"></i> Referral <strong>14%</strong></li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="panel">
+          <div class="panel-header">
+            <div>
+              <span>Growth</span>
+              <h2>Monthly sales</h2>
+            </div>
+          </div>
+          <div class="line-chart" aria-label="Monthly sales line chart">
+            <svg viewBox="0 0 420 180" role="img" aria-labelledby="salesChartTitle">
+              <title id="salesChartTitle">Monthly sales trend</title>
+              <polyline points="0,132 58,112 116,124 174,86 232,92 290,48 348,58 420,30"></polyline>
+              <g>
+                <circle cx="0" cy="132" r="5"></circle>
+                <circle cx="58" cy="112" r="5"></circle>
+                <circle cx="116" cy="124" r="5"></circle>
+                <circle cx="174" cy="86" r="5"></circle>
+                <circle cx="232" cy="92" r="5"></circle>
+                <circle cx="290" cy="48" r="5"></circle>
+                <circle cx="348" cy="58" r="5"></circle>
+                <circle cx="420" cy="30" r="5"></circle>
+              </g>
+            </svg>
+            <div class="chart-axis">
+              <span>Jan</span>
+              <span>Mar</span>
+              <span>May</span>
+              <span>Jul</span>
+            </div>
+          </div>
+        </article>
+      </section>
+
+      <section class="panel table-panel" id="orders">
+        <div class="panel-header">
+          <div>
+            <span>Recent activity</span>
+            <h2>Latest orders</h2>
+          </div>
+          <button class="text-button" type="button">View All</button>
+        </div>
+
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Order</th>
+                <th>Customer</th>
+                <th>Status</th>
+                <th>Total</th>
+                <th>Date</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>#AP-1042</td>
+                <td>Priya Sharma</td>
+                <td><span class="status completed">Completed</span></td>
+                <td>$1,240</td>
+                <td>22 May 2026</td>
+              </tr>
+              <tr>
+                <td>#AP-1041</td>
+                <td>Rahul Mehta</td>
+                <td><span class="status pending">Pending</span></td>
+                <td>$840</td>
+                <td>22 May 2026</td>
+              </tr>
+              <tr>
+                <td>#AP-1040</td>
+                <td>Ana Wilson</td>
+                <td><span class="status shipped">Shipped</span></td>
+                <td>$2,180</td>
+                <td>21 May 2026</td>
+              </tr>
+              <tr>
+                <td>#AP-1039</td>
+                <td>Dev Patel</td>
+                <td><span class="status completed">Completed</span></td>
+                <td>$620</td>
+                <td>21 May 2026</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="panel table-panel" id="customers">
+        <div class="panel-header">
+          <div>
+            <span>Customers</span>
+            <h2>Top accounts</h2>
+          </div>
+          <div class="table-actions" aria-label="Customer filters">
+            <button class="filter-button active" type="button" data-filter="all">All</button>
+            <button class="filter-button" type="button" data-filter="enterprise">Enterprise</button>
+            <button class="filter-button" type="button" data-filter="startup">Startup</button>
+          </div>
+        </div>
+
+        <div class="table-wrap">
+          <table id="customerTable">
+            <thead>
+              <tr>
+                <th>Company</th>
+                <th>Plan</th>
+                <th>Owner</th>
+                <th>Health</th>
+                <th>MRR</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr data-plan="enterprise">
+                <td>Northstar Retail</td>
+                <td>Enterprise</td>
+                <td>Sandeep</td>
+                <td><span class="status completed">Healthy</span></td>
+                <td>$18,400</td>
+              </tr>
+              <tr data-plan="startup">
+                <td>BluePeak Labs</td>
+                <td>Startup</td>
+                <td>Anita Rao</td>
+                <td><span class="status shipped">Growing</span></td>
+                <td>$4,950</td>
+              </tr>
+              <tr data-plan="enterprise">
+                <td>PrimeGrid Systems</td>
+                <td>Enterprise</td>
+                <td>Dev Patel</td>
+                <td><span class="status pending">Review</span></td>
+                <td>$12,800</td>
+              </tr>
+              <tr data-plan="startup">
+                <td>NovaCart</td>
+                <td>Startup</td>
+                <td>Meera Sen</td>
+                <td><span class="status completed">Healthy</span></td>
+                <td>$3,700</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+
+    <div class="mobile-controls" aria-label="Mobile quick controls">
+      <button class="mobile-control-button" id="mobileMenuButton" type="button" aria-label="Open sidebar" aria-controls="sidebar" aria-expanded="false">
+        <span class="mobile-menu-lines" aria-hidden="true">
+          <i></i>
+          <i></i>
+          <i></i>
+        </span>
+        <span>Menu</span>
+      </button>
+      <button class="mobile-control-button" id="mobileThemeToggle" type="button" aria-label="Switch to dark mode" aria-pressed="false">
+        <span class="theme-icon" aria-hidden="true">☾</span>
+        <span class="theme-text">Dark</span>
+      </button>
+    </div>
+  </div>
+
+  <script src="js/app.js"></script>
+</body>
+</html>
