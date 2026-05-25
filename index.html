@@ -179,14 +179,8 @@
               <option>Last quarter</option>
             </select>
           </div>
-          <div class="bar-chart" aria-label="Revenue bar chart">
-            <div style="--height: 48%"><span>Mon</span></div>
-            <div style="--height: 62%"><span>Tue</span></div>
-            <div style="--height: 54%"><span>Wed</span></div>
-            <div style="--height: 76%"><span>Thu</span></div>
-            <div style="--height: 68%"><span>Fri</span></div>
-            <div style="--height: 88%"><span>Sat</span></div>
-            <div style="--height: 72%"><span>Sun</span></div>
+          <div class="chart-canvas-wrap tall">
+            <canvas id="revenueChart" aria-label="Revenue bar chart" role="img"></canvas>
           </div>
         </article>
 
@@ -227,8 +221,8 @@
             </div>
           </div>
           <div class="donut-layout">
-            <div class="donut-chart" aria-label="Traffic channels chart">
-              <span>68%</span>
+            <div class="chart-canvas-wrap donut">
+              <canvas id="trafficChart" aria-label="Traffic channels chart" role="img"></canvas>
             </div>
             <ul class="legend-list">
               <li><i class="legend direct"></i> Direct <strong>42%</strong></li>
@@ -246,27 +240,8 @@
               <h2>Monthly sales</h2>
             </div>
           </div>
-          <div class="line-chart" aria-label="Monthly sales line chart">
-            <svg viewBox="0 0 420 180" role="img" aria-labelledby="salesChartTitle">
-              <title id="salesChartTitle">Monthly sales trend</title>
-              <polyline points="0,132 58,112 116,124 174,86 232,92 290,48 348,58 420,30"></polyline>
-              <g>
-                <circle cx="0" cy="132" r="5"></circle>
-                <circle cx="58" cy="112" r="5"></circle>
-                <circle cx="116" cy="124" r="5"></circle>
-                <circle cx="174" cy="86" r="5"></circle>
-                <circle cx="232" cy="92" r="5"></circle>
-                <circle cx="290" cy="48" r="5"></circle>
-                <circle cx="348" cy="58" r="5"></circle>
-                <circle cx="420" cy="30" r="5"></circle>
-              </g>
-            </svg>
-            <div class="chart-axis">
-              <span>Jan</span>
-              <span>Mar</span>
-              <span>May</span>
-              <span>Jul</span>
-            </div>
+          <div class="chart-canvas-wrap">
+            <canvas id="salesChart" aria-label="Monthly sales line chart" role="img"></canvas>
           </div>
         </article>
       </section>
@@ -382,6 +357,106 @@
           </table>
         </div>
       </section>
+
+      <section class="tables-grid" aria-label="Operational tables">
+        <article class="panel table-panel" id="products">
+          <div class="panel-header">
+            <div>
+              <span>Inventory</span>
+              <h2>Product stock</h2>
+            </div>
+            <button class="text-button" type="button">Manage</button>
+          </div>
+
+          <div class="table-wrap">
+            <table class="compact-table">
+              <thead>
+                <tr>
+                  <th>Product</th>
+                  <th>Category</th>
+                  <th>Stock</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Analytics Suite</td>
+                  <td>Software</td>
+                  <td>48</td>
+                  <td><span class="status completed">Available</span></td>
+                </tr>
+                <tr>
+                  <td>POS Terminal</td>
+                  <td>Hardware</td>
+                  <td>12</td>
+                  <td><span class="status pending">Low Stock</span></td>
+                </tr>
+                <tr>
+                  <td>Support Plan Pro</td>
+                  <td>Service</td>
+                  <td>86</td>
+                  <td><span class="status completed">Available</span></td>
+                </tr>
+                <tr>
+                  <td>Retail Scanner</td>
+                  <td>Hardware</td>
+                  <td>0</td>
+                  <td><span class="status danger">Out</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </article>
+
+        <article class="panel table-panel">
+          <div class="panel-header">
+            <div>
+              <span>Operations</span>
+              <h2>Team workload</h2>
+            </div>
+            <button class="text-button" type="button">Assign</button>
+          </div>
+
+          <div class="table-wrap">
+            <table class="compact-table">
+              <thead>
+                <tr>
+                  <th>Owner</th>
+                  <th>Queue</th>
+                  <th>Open</th>
+                  <th>Priority</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Sandeep</td>
+                  <td>Approvals</td>
+                  <td>8</td>
+                  <td><span class="status pending">High</span></td>
+                </tr>
+                <tr>
+                  <td>Anita Rao</td>
+                  <td>Customer Success</td>
+                  <td>14</td>
+                  <td><span class="status shipped">Medium</span></td>
+                </tr>
+                <tr>
+                  <td>Dev Patel</td>
+                  <td>Fulfillment</td>
+                  <td>6</td>
+                  <td><span class="status completed">Normal</span></td>
+                </tr>
+                <tr>
+                  <td>Meera Sen</td>
+                  <td>Billing</td>
+                  <td>3</td>
+                  <td><span class="status completed">Normal</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </article>
+      </section>
     </main>
 
     <div class="mobile-controls" aria-label="Mobile quick controls">
@@ -454,6 +529,7 @@
     </section>
   </div>
 
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.9/dist/chart.umd.min.js"></script>
   <script src="js/app.js"></script>
 </body>
 </html>
