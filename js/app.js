@@ -1,5 +1,4 @@
 const sidebar = document.querySelector("#sidebar");
-const menuButton = document.querySelector("#menuButton");
 const mobileMenuButton = document.querySelector("#mobileMenuButton");
 const sidebarOverlay = document.querySelector("#sidebarOverlay");
 const navLinks = document.querySelectorAll(".nav-link");
@@ -13,6 +12,11 @@ const authTabs = document.querySelectorAll("[data-auth-tab]");
 const authForms = document.querySelectorAll("[data-auth-form]");
 const authCloseButtons = document.querySelectorAll("[data-auth-close]");
 const authMessage = document.querySelector("#authMessage");
+const notificationButton = document.querySelector("#notificationButton");
+const notificationPanel = document.querySelector("#notificationPanel");
+const notificationCount = document.querySelector("#notificationCount");
+const markNotificationsRead = document.querySelector("#markNotificationsRead");
+const notificationItems = document.querySelectorAll(".notification-list li");
 const chartCanvases = {
   revenue: document.querySelector("#revenueChart"),
   traffic: document.querySelector("#trafficChart"),
@@ -269,7 +273,6 @@ function initCharts() {
 
 function setSidebar(open) {
   sidebar.classList.toggle("open", open);
-  menuButton.setAttribute("aria-expanded", String(open));
   mobileMenuButton.setAttribute("aria-expanded", String(open));
   sidebarOverlay.hidden = !open;
 }
@@ -317,14 +320,29 @@ function closeAuthPanel() {
   authPanel.hidden = true;
 }
 
+function getUnreadNotifications() {
+  return notificationPanel.querySelectorAll(".notification-list .unread");
+}
+
+function updateNotificationCount() {
+  const unreadTotal = getUnreadNotifications().length;
+
+  notificationCount.textContent = String(unreadTotal);
+  notificationCount.hidden = unreadTotal === 0;
+  markNotificationsRead.disabled = unreadTotal === 0;
+}
+
+function setNotificationsOpen(open) {
+  notificationPanel.hidden = !open;
+  notificationButton.setAttribute("aria-expanded", String(open));
+  notificationButton.setAttribute("aria-label", open ? "Close notifications" : "Open notifications");
+}
+
 const savedTheme = localStorage.getItem("dashboard-theme");
 const preferredTheme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
 setTheme(savedTheme || preferredTheme);
 initCharts();
-
-menuButton.addEventListener("click", () => {
-  setSidebar(!sidebar.classList.contains("open"));
-});
+updateNotificationCount();
 
 mobileMenuButton.addEventListener("click", () => {
   setSidebar(!sidebar.classList.contains("open"));
@@ -387,9 +405,49 @@ authForms.forEach((form) => {
   });
 });
 
+notificationButton.addEventListener("click", () => {
+  setNotificationsOpen(notificationPanel.hidden);
+});
+
+markNotificationsRead.addEventListener("click", () => {
+  getUnreadNotifications().forEach((item) => {
+    item.classList.remove("unread");
+  });
+
+  updateNotificationCount();
+});
+
+notificationItems.forEach((item) => {
+  const notificationTitle = item.querySelector("strong")?.textContent || "notification";
+
+  item.setAttribute("role", "button");
+  item.setAttribute("tabindex", "0");
+  item.setAttribute("aria-label", `Mark ${notificationTitle} as read`);
+
+  const markItemRead = () => {
+    item.classList.remove("unread");
+    updateNotificationCount();
+  };
+
+  item.addEventListener("click", markItemRead);
+  item.addEventListener("keydown", (event) => {
+    if (event.key === "Enter" || event.key === " ") {
+      event.preventDefault();
+      markItemRead();
+    }
+  });
+});
+
+document.addEventListener("click", (event) => {
+  if (!notificationPanel.hidden && !event.target.closest(".notification-wrap")) {
+    setNotificationsOpen(false);
+  }
+});
+
 window.addEventListener("keydown", (event) => {
   if (event.key === "Escape") {
     setSidebar(false);
     closeAuthPanel();
+    setNotificationsOpen(false);
   }
 });
